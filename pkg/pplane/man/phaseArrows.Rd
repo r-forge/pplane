@@ -2,17 +2,19 @@
 \alias{phaseArrows}
 \title{phaseArrows}
 \description{plotting phase space vectors}
-\usage{phaseArrows(fDeriv, xlims, ylims, resol = 20, isJitter = TRUE, 
-    add = F, arrowHeads = 0, arrowLength = 0.5, col = rev(heat.colors(150))[-(1:50)], 
-    logLength = FALSE, dimnames = NULL, ...)}
+\usage{phaseArrows(fDeriv, xlims = c(-3, 3), ylims = xlims, resol = 20, 
+    isJitter = FALSE, add = F, arrowHeads = 0.04, arrowLength = 0.5, 
+    col = rev(heat.colors(150))[-(1:50)], logLength = FALSE, 
+    dimnames = NULL, ...)}
 \arguments{
   \item{fDeriv}{derivative function \code{function(x,y,...)}}
   \item{xlims}{numeric vector (2): range of the x values}
   \item{ylims}{numeric vector (2): range of the y values}
   \item{resol}{scalar integer: number of points in x and y range}
-  \item{isJitter}{set to FALSE to avoid jittering vector starting positions}
+  \item{isJitter}{set to TRUE to jitter vector starting positions to avoid overplotting 
+(however calculating contours does not work then anymore) }
   \item{add}{set to TRUE to add arrows to an existing plot}
-  \item{arrowHeads}{size of the arrow heads (in inches), defaults to no heads, 0.04 gives nice results}
+  \item{arrowHeads}{size of the arrow heads (in inches), set t0 0 for heads, 0.04 gives nice results}
   \item{arrowLength}{length of the vectors, set to 0 to scale vectors with magnitude of flow}
   \item{col}{color scale}
   \item{logLength}{set to TRUE to calculate colors or length for log of the flow strength}
@@ -34,8 +36,7 @@
 fDeriv <- predatorprey(lambda=3, epsilon=2, delta=3, eta=2)
 #
 # set up a plotting window
-windows(width = 4.6, height = 3.2, pointsize = 10)
-par( las = 1, mar = c(2, 3.3, 0, 0) + 0.3, tck = 0.02, mgp = c(1.1, 0.2, 0))
+# windows(width = 4.6, height = 3.2, pointsize = 10); par( las = 1, mar = c(2, 3.3, 0, 0) + 0.3, tck = 0.02, mgp = c(1.1, 0.2, 0))
 #
 # default: strength is colored, no arrow heads, same length
 tmp <- phaseArrows( fDeriv, c(-2,5),c(-2,5) );

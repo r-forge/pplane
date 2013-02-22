@@ -5,7 +5,7 @@ Date: 2013-02-18
 Author: Thomas Wutzler
 Maintainer: Thomas Wutzler <twutz@bgc-jena.mpg.de>
 Description: Phase plane plots of 2D nonlinear systems
-Depends: R (>= 1.14.0), deSolve, abind
+Depends: R (>= 1.14.0), deSolve, abind, rpanel
 Suggests: testthat, snowfall
 License: GPL-2
 LazyLoad: yes

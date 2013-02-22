@@ -28,7 +28,9 @@ evalDerivGrid <- function(
     ,xlims      ##<< numeric vector (2): range of the x values
     ,ylims      ##<< numeric vector (2): range of the y values
     ,resol=11   ##<< scalar integer: number of points in x and y range
-    ,isJitter=TRUE      ##<< set to FALSE to avoid jittering vector starting positions 
+    ,isJitter=FALSE     
+        ### set to TRUE to jitter vector starting positions to avoid overplotting 
+        ### (however calculating contours does not work then anymore) 
     ,...                ##<< further arguments to \code{fun}, such as \code{parms}
     ,useSnowfall=FALSE  ##<< set to TRUE to use parallel execution using snowfall
 ){
@@ -72,7 +74,7 @@ phaseArrowsArray <- function(
     z                   ##<< numeric matrix (dimx,dimy,2): calculated flow at a grid, see 
     ,xy                 ##<< numeric matrix (dimx,dimy,2): (x,y) of each gridpoint
     ,add=F              ##<< set to TRUE to add arrows to an existing plot
-    ,arrowHeads=0       ##<< size of the arrow heads (in inches), defaults to no heads, 0.04 gives nice results 
+    ,arrowHeads=0.4     ##<< size of the arrow heads (in inches), set to 0 for no heads, 0.04 gives nice results 
     ,arrowLength=0.5    ##<< length of the vectors, set to 0 to scale vectors with magnitude of flow
     ,col=rev(heat.colors(150))[-(1:50)]  ##<< color scale  
     ,logLength=FALSE    ##<< set to TRUE to calculate colors or length for log of the flow strength
@@ -111,12 +113,14 @@ phaseArrowsArray <- function(
 phaseArrows <- function(
         ### plotting phase space vectors
         fDeriv      ##<< derivative function \code{function(x,y,...)}
-        ,xlims      ##<< numeric vector (2): range of the x values
-        ,ylims      ##<< numeric vector (2): range of the y values
-        ,resol=20   ##<< scalar integer: number of points in x and y range
-        ,isJitter=TRUE      ##<< set to FALSE to avoid jittering vector starting positions 
+        ,xlims=c(-3,3)      ##<< numeric vector (2): range of the x values
+        ,ylims=xlims        ##<< numeric vector (2): range of the y values
+        ,resol=20           ##<< scalar integer: number of points in x and y range
+        ,isJitter=FALSE      
+            ### set to TRUE to jitter vector starting positions to avoid overplotting 
+            ### (however calculating contours does not work then anymore) 
         ,add=F              ##<< set to TRUE to add arrows to an existing plot
-        ,arrowHeads=0       ##<< size of the arrow heads (in inches), defaults to no heads, 0.04 gives nice results 
+        ,arrowHeads=0.04    ##<< size of the arrow heads (in inches), set t0 0 for heads, 0.04 gives nice results 
         ,arrowLength=0.5    ##<< length of the vectors, set to 0 to scale vectors with magnitude of flow
         ,col=rev(heat.colors(150))[-(1:50)]  ##<< color scale  
         ,logLength=FALSE    ##<< set to TRUE to calculate colors or length for log of the flow strength
@@ -135,8 +139,7 @@ attr( phaseArrows,"ex") <- function(){
     fDeriv <- predatorprey(lambda=3, epsilon=2, delta=3, eta=2)
     #
     # set up a plotting window
-    windows(width = 4.6, height = 3.2, pointsize = 10)
-    par( las = 1, mar = c(2, 3.3, 0, 0) + 0.3, tck = 0.02, mgp = c(1.1, 0.2, 0))
+    # windows(width = 4.6, height = 3.2, pointsize = 10); par( las = 1, mar = c(2, 3.3, 0, 0) + 0.3, tck = 0.02, mgp = c(1.1, 0.2, 0))
     #
     # default: strength is colored, no arrow heads, same length
     tmp <- phaseArrows( fDeriv, c(-2,5),c(-2,5) );
@@ -171,8 +174,8 @@ phaseContours <- function(
     z2 <- z[,,2]
     x <- xy[,,1]
     y <- xy[,,2]
-    contour(x[1,],y[,1],z1, add=add, col=colors[1], ...);
-    contour(x[1,],y[,1],z2, add=T, col=colors[2],...); 
+    contour(x[1,],y[,1],t(z1), add=add, col=colors[1], ...);    # why t? but it works maybe stacked on y instead on x
+    contour(x[1,],y[,1],t(z2), add=T, col=colors[2],...); 
 }
 
 phaseNullclines <- function(

@@ -2,14 +2,15 @@
 \alias{evalDerivGrid}
 \title{evalDerivGrid}
 \description{evaluating derivative function at grid}
-\usage{evalDerivGrid(fDeriv, xlims, ylims, resol = 11, isJitter = TRUE, 
+\usage{evalDerivGrid(fDeriv, xlims, ylims, resol = 11, isJitter = FALSE, 
     ..., useSnowfall = FALSE)}
 \arguments{
   \item{fDeriv}{derivative function \code{function(x,y,...)}}
   \item{xlims}{numeric vector (2): range of the x values}
   \item{ylims}{numeric vector (2): range of the y values}
   \item{resol}{scalar integer: number of points in x and y range}
-  \item{isJitter}{set to FALSE to avoid jittering vector starting positions}
+  \item{isJitter}{set to TRUE to jitter vector starting positions to avoid overplotting 
+(however calculating contours does not work then anymore) }
   \item{\dots}{further arguments to \code{fun}, such as \code{parms}}
   \item{useSnowfall}{set to TRUE to use parallel execution using snowfall}
 }
