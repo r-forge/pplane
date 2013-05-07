@@ -9,9 +9,9 @@
   \item{Kx}{coefficient, see details}
   \item{Ky}{coefficient, see details}
 }
-\details{derivate function for system
-\cr dx = mu*(1-(x+y)/Kx)*x
-\cr dy = lambda*(1-(x+y)/Ky)*y}
+\details{derivate function for system \cr
+dx = mu*(1-(x+y)/Kx)*x \cr
+dy = lambda*(1-(x+y)/Ky)*y}
 \value{closure calculating the derivative based on vector arguments (x,y).}
 
 \author{Thomas Wutzler}

@@ -9,9 +9,9 @@
   \item{delta}{coefficient for dy = g(y)}
   \item{eta}{coefficient for dy = g(xy)}
 }
-\details{derivate function for system 
-\cr dx = f(x,y) = (lambda - epsilon*y)*x
-\cr dy = g(x,y) = (-delta + eta*x)*y}
+\details{derivate function for system \cr
+dx = f(x,y) = (lambda - epsilon*y)*x \cr
+dy = g(x,y) = (-delta + eta*x)*y}
 \value{closure calculating the derivative based on vector arguments (x,y).}
 
 \author{Thomas Wutzler}

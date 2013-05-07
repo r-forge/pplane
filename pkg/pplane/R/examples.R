@@ -7,9 +7,9 @@ predatorprey <- function(
     ,delta=1            ##<< coefficient for dy = g(y)
     , eta=.001          ##<< coefficient for dy = g(xy)
 ){
-    ##details<< derivate function for system 
-    ## \cr dx = f(x,y) = (lambda - epsilon*y)*x
-    ## \cr dy = g(x,y) = (-delta + eta*x)*y
+    ##details<< derivate function for system \cr
+    ## dx = f(x,y) = (lambda - epsilon*y)*x \cr
+    ## dy = g(x,y) = (-delta + eta*x)*y
     function(x,y=NULL){
         if (is.null(y)) {
             y <- x[2]; x <- x[1];
@@ -40,9 +40,9 @@ competition <- function(
     , Ky=500    ##<< coefficient, see details
 ) {
     ##details<< 
-    ## derivate function for system
-    ## \cr dx = mu*(1-(x+y)/Kx)*x
-    ## \cr dy = lambda*(1-(x+y)/Ky)*y
+    ## derivate function for system \cr
+    ## dx = mu*(1-(x+y)/Kx)*x \cr
+    ## dy = lambda*(1-(x+y)/Ky)*y
     function(x,y=NULL){
         if (is.null(y)) {
             y<- x[2]; x <- x[1];
@@ -60,9 +60,9 @@ newtoncooling <- function(
     ,a2 ##<< coefficient, see details
 ) {
     ##details<< 
-    ## derivate function for system
-    ## \cr dx = a1*(y-x)
-    ## \cr dy = a2*(x-y)
+    ## derivate function for system \cr
+    ## dx = a1*(y-x)
+    ## dy = a2*(x-y)
     function(x,y=NULL){
         if (is.null(y)) {
             y<- x[2]; x <- x[1];
@@ -81,9 +81,9 @@ fhn <- function(
     , a=0.3     ##<< coefficient, see details
 ) {
     ##details<< 
-    ## derivate function for system
-    ## \cr dx = -x*(x-a)*(x-1) - y
-    ## \cr dy = epsilon*(x - gamma*y)
+    ## derivate function for system \cr
+    ## dx = -x*(x-a)*(x-1) - y \cr
+    ## dy = epsilon*(x - gamma*y)
     function(x,y=NULL){
         if (is.null(y)) {
             y<- x[2]; x <- x[1];
@@ -105,9 +105,9 @@ disease <- function(
     ,C=2    ##<< coefficient, see details
 ){
     ##details<< 
-    ## derivate function for system
-    ## \cr dx = -x*(x-a)*(x-1) - y
-    ## \cr dy = epsilon*(x - gamma*y)
+    ## derivate function for system \cr
+    ## dx = -x*(x-a)*(x-1) - y \cr
+    ## dy = epsilon*(x - gamma*y)
     function(x,y=NULL){
         if (is.null(y)) {
             y<- x[2]; x <- x[1];
@@ -135,9 +135,9 @@ linear <- function(
     ## harmonic oscillator. The x variable is the spring position,
     ## the y variable is the spring velocity.
     ##
-    ## derivate function for system
-    ## \cr dx = a*(x-x0) + b*(y-y0) + e
-    ## \cr dy = c*(x-x0) + d*(y-y0) + f
+    ## derivate function for system \cr
+    ## dx = a*(x-x0) + b*(y-y0) + e \cr
+    ## dy = c*(x-x0) + d*(y-y0) + f
     foo <- function(x,y=NULL) {
         if (is.null(y)) {
             y<- x[2]; x <- x[1];

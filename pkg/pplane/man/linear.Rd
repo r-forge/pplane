@@ -17,9 +17,9 @@
 harmonic oscillator. The x variable is the spring position,
 the y variable is the spring velocity.
 
-derivate function for system
-\cr dx = a*(x-x0) + b*(y-y0) + e
-\cr dy = c*(x-x0) + d*(y-y0) + f}
+derivate function for system \cr
+dx = a*(x-x0) + b*(y-y0) + e \cr
+dy = c*(x-x0) + d*(y-y0) + f}
 \value{closure calculating the derivative based on vector arguments (x,y).}
 
 \author{Thomas Wutzler}

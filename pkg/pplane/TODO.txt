@@ -1,0 +1,11 @@
+separate calculaton and plotting
+
+S3 object with 
+* field of derivatives
+* trajectories
+* fixed points (Jacobian, eigenvectors)
+
+
+Maybe: rpanel object to
+* modify object (add trajectories, refine grid)
+* manipulate plotting parameters (zoom, colors, switch nullclines, ...)

@@ -8,9 +8,9 @@
   \item{mu}{coefficient, see details}
   \item{C}{coefficient, see details}
 }
-\details{derivate function for system
-\cr dx = -x*(x-a)*(x-1) - y
-\cr dy = epsilon*(x - gamma*y)}
+\details{derivate function for system \cr
+dx = -x*(x-a)*(x-1) - y \cr
+dy = epsilon*(x - gamma*y)}
 \value{closure calculating the derivative based on vector arguments (x,y).}
 
 \author{Thomas Wutzler}
