@@ -46,7 +46,7 @@ evalDerivGrid <- function(
         x <- x + matrix(runif(npts, -xspace, xspace),resol,resol)
         y <- y + matrix(runif(npts, -yspace, yspace),resol,resol)
     }
-    xy <- abind(x,y,rev.along=0)
+    xy <- abind::abind(x,y,rev.along=0)
     #z <- apply( xy, c(1,2), function(X){ fun(0, X, ...)[[1]] })
     zv1 <- fDeriv( x[1], y[1] )     # in order to get proper variable names
     zv <- if( isTRUE(useSnowfall)){
@@ -58,7 +58,7 @@ evalDerivGrid <- function(
             matrix( fDeriv(xv[ii], yv[ii]), ncol=2 )
         }
         res <- sfLapply( x=1:ncpu, fun=fRemote, iChunk=iChunk, fDeriv=fDeriv, xv=c(x), yv=c(y), ...)
-        abind( res, along=1)
+        abind::abind( res, along=1)
     }else fDeriv( c(x), c(y) )
     z <- array( zv, dim=c(resol,resol,2) )
     dimnames(z) <- list( x=NULL, y=NULL, names(zv1))
@@ -203,7 +203,7 @@ drawTrajectories <- function(
     , arrowHeads=0.06   ##<< size of the arrow heads (in inches), set t0 0 to avoid
     , qArrow = 0.1      ##<< quantile of the timepoints at which an arrow is drawn
     , fLapply=lapply    ##<< apply function (use \code{sfLapply} for parallel calculation of trajectories)
-    , fOde=lsoda        ##<< function to solve the forward problem
+    , fOde=deSolve::lsoda   ##<< function to solve the forward problem
 ) {
     ##seealso<< \code{\link{phaseArrows}}, \code{\link{pplane}} 
     #print(paste("Click", loc.num, "initial values"))

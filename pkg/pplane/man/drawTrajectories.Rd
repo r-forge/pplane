@@ -4,7 +4,7 @@
 \description{evaluate and draw trajectories in the phase plane}
 \usage{drawTrajectories(fDeriv, tEnd = 1, tCut = 60, ..., tStart = 0, 
     x0 = list(x = c(1), y = c(1)), color = "black", arrowHeads = 0.06, 
-    qArrow = 0.1, fLapply = lapply, fOde = lsoda)}
+    qArrow = 0.1, fLapply = lapply, fOde = deSolve::lsoda)}
 \arguments{
   \item{fDeriv}{derivative function \code{function(x,y,...)}}
   \item{tEnd}{numeric scalar: end time}
